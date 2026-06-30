@@ -70,17 +70,17 @@ async function request<T>(
     return { drinks: getAllFromStore() } as T;
   }
 
+  if (method === "GET" && url.startsWith(`${API_BASE}/search`)) {
+    const query = (body as { s: string })?.s ?? "";
+    const drinks = searchByNameInStore(query);
+    return { drinks: drinks.length > 0 ? drinks : null } as T;
+  }
+
   if (method === "GET" && url.startsWith(`${API_BASE}/`)) {
     const id = url.replace(`${API_BASE}/`, "");
     const drink = findByIdInStore(id);
     if (!drink) throw new ApiError(404, `Cóctel con id ${id} no encontrado`);
     return { drinks: [drink] } as T;
-  }
-
-  if (method === "GET" && url.startsWith(`${API_BASE}/search`)) {
-    const query = (body as { s: string })?.s ?? "";
-    const drinks = searchByNameInStore(query);
-    return { drinks: drinks.length > 0 ? drinks : null } as T;
   }
 
   if (method === "POST" && url === API_BASE) {

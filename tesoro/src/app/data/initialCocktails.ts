@@ -12,7 +12,7 @@ export const INITIAL_COCKTAILS: Cocktail[] = [
     ingredients: "Tequila, Triple sec, Jugo de lima, Sal",
   },
   {
-    id: "11007",
+    id: "11008",
     name: "Mojito",
     category: "Cóctel",
     alcoholic: "Alcohólico",

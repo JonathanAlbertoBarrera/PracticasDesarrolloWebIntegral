@@ -33,7 +33,7 @@ export function CocktailForm({ cocktail, onSubmit, onCancel }: CocktailFormProps
         name: cocktail.name,
         category: cocktail.category,
         alcoholic: cocktail.alcoholic,
-        glass: cocktail.category,
+        glass: cocktail.glass,
         instructions: cocktail.instructions,
         ingredients: cocktail.ingredients,
       });
@@ -42,10 +42,18 @@ export function CocktailForm({ cocktail, onSubmit, onCancel }: CocktailFormProps
     }
   }, [cocktail]);
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!form.name.trim() || !form.glass.trim()) return;
+
+    const formElement = e.currentTarget;
+
+    if (!formElement.checkValidity()) {
+      formElement.reportValidity();
+      return;
+    }
+
     setSubmitting(true);
+
     try {
       await onSubmit(form);
     } finally {

@@ -20,7 +20,7 @@ export function PageHeader({ count, onCreate }: PageHeaderProps) {
           {count} {count === 1 ? "registro" : "registros"}
         </p>
       </div>
-      <Button onClick={onCreat} className="py-2.5">
+      <Button onClick={onCreate} className="py-2.5">
         <PlusIcon size={14} />
         Nuevo cóctel
       </Button>

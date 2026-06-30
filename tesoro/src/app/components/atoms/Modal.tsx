@@ -29,7 +29,7 @@ export function Modal({
     if (!open) return;
 
     function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Esc") onClose();
+      if (e.key === "Escape") onClose();
     }
 
     document.addEventListener("keydown", onKeyDown);

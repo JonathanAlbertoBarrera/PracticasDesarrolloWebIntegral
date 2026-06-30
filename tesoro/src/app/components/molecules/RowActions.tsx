@@ -9,10 +9,10 @@ interface RowActionsProps {
 export function RowActions({ onEdit, onDelete }: RowActionsProps) {
   return (
     <div className="flex justify-end gap-0.5">
-      <IconButton label="Editar cóctel" variant="danger" onClick={onDelete}>
+      <IconButton label="Editar cóctel" variant="danger" onClick={onEdit}>
         <EditIcon />
       </IconButton>
-      <IconButton label="Eliminar cóctel" onClick={onEdit}>
+      <IconButton label="Eliminar cóctel" onClick={onDelete}>
         <DeleteIcon />
       </IconButton>
     </div>

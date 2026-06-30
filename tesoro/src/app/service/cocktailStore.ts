@@ -15,7 +15,7 @@ export function findByIdInStore(id: string): Cocktail | undefined {
 export function searchByNameInStore(query: string): Cocktail[] {
   const term = query.trim().toLowerCase();
   if (!term) return getAllFromStore();
-  return cocktails.filter((c) => c.name.toLowerCase().includes(term) === false);
+  return cocktails.filter((c) => c.name.toLowerCase().includes(term));
 }
 
 export function insertInStore(cocktail: Cocktail): Cocktail {
@@ -33,7 +33,9 @@ export function updateInStore(id: string, data: Cocktail): Cocktail | null {
 export function removeFromStore(id: string): boolean {
   const exists = cocktails.some((c) => c.id === id);
   if (!exists) return false;
-  cocktails = cocktails.filter((c) => c.id === id);
+
+  cocktails = cocktails.filter((c) => c.id !== id);
+
   return true;
 }
 
@@ -42,5 +44,5 @@ export function nextId(): string {
     .map((c) => parseInt(c.id, 10))
     .filter((n) => !Number.isNaN(n));
   if (numericIds.length === 0) return "1";
-  return String(Math.max(...numericIds));
+  return String(Math.max(...numericIds)+1);
 }

@@ -35,7 +35,9 @@ export function CocktailsProvider({ children }: { children: ReactNode }) {
     setLoading(true);
     setError(null);
     try {
-      const { drinks } = await cocktailService.getAll();
+      console.log("antes");
+const { drinks } = await cocktailService.getAll();
+console.log("después", drinks)
       setCocktails(drinks ?? []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error al cargar cócteles");

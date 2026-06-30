@@ -47,10 +47,11 @@ export function CocktailCrud() {
 
   async function handleSubmit(input: CocktailInput) {
     if (formModal === "edit" && selectedCocktail) {
-      await addCocktail(input);
+      await updateCocktail(selectedCocktail.id, input);
     } else {
-      await updateCocktail(selectedCocktail!.id, input);
+      await addCocktail(input);
     }
+
     closeFormModal();
   }
 
