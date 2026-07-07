@@ -1,0 +1,11 @@
+{
+  "name": "nimbus-buildtime-demo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["commons", "apps/*"],
+  "scripts": {
+    "dev": "npm run dev -w @nimbus/webshell",
+    "build": "npm run build -w @nimbus/webshell",
+    "preview": "npm run preview -w @nimbus/webshell"
+  }
+}
