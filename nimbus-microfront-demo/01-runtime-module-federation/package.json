@@ -1,0 +1,17 @@
+{
+  "name": "nimbus-microfront-demo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["commons", "apps/*"],
+  "scripts": {
+    "dev:front": "npm run dev -w @nimbus/inventory-front",
+    "dev:shell": "npm run dev -w @nimbus/webshell",
+    "build": "npm run build -w @nimbus/inventory-front && npm run build -w @nimbus/webshell",
+    "preview:front": "npm run preview -w @nimbus/inventory-front",
+    "preview:shell": "npm run preview -w @nimbus/webshell",
+    "start:federated": "npm run build && concurrently -n SHELL,FRONT -c magenta,green \"npm run preview:shell\" \"npm run preview:front\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
