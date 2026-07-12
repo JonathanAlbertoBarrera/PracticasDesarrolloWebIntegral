@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Libro {
+  id             String   @id @default(uuid())
+  titulo         String
+  sinopsis       String
+  autor          String
+  anioPublicacion Int
+  genero         String
+  editorial      String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
